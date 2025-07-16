@@ -28,10 +28,4 @@ jobs:
         aws s3 sync website/ s3://cloudpipe-deploy-${{ secrets.AWS_ACCOUNT_ID }}/ \
           --delete
     
-    - name: Notify Completion
-      if: always()
-      uses: slackapi/slack-github-action@v1.23.0
-      with:
-        slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-        channel-id: 'deploy-notifications'
-        text: "Website deployment completed. Status: ${{ job.status }}"
+  
